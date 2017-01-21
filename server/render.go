@@ -21,13 +21,7 @@ func serveRender(c web.C, w http.ResponseWriter, r *http.Request, size int, conf
 	player := c.URLParams["player"]
 	meta := loadSkinMeta(player, watch)
 
-	// Check if we can return 304 Not Modified
-	if serveCached(w, r, meta) {
-		return
-	}
-
 	meta, skin := meta.Fetch()
-	prepareResponse(w, r, meta)
 
 	watch.Mark()
 	sizeY := size

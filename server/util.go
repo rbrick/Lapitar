@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/FrozenOrb/lapitar/mc"
 	"github.com/FrozenOrb/lapitar/server/cache"
@@ -49,28 +48,6 @@ func loadSkinMeta(name string, watch *util.StopWatch) (skin cache.SkinMeta) {
 
 	log.Println("Loaded skin:", skin.Profile().Name(), watch)
 	return
-}
-
-const (
-	keepCache    = 24 * time.Hour
-	cacheControl = "max-age=86400" // 24*60*60, one day in seconds
-)
-
-func serveCached(w http.ResponseWriter, r *http.Request, meta cache.SkinMeta) bool {
-	if tag := r.Header.Get("If-None-Match"); tag == meta.ID() {
-		prepareResponse(w, r, meta)
-		w.WriteHeader(http.StatusNotModified)
-		return true
-	}
-
-	return false
-}
-
-func prepareResponse(w http.ResponseWriter, r *http.Request, meta cache.SkinMeta) {
-	w.Header().Add("Cache-Control", cacheControl)
-	w.Header().Add("Expires", time.Now().Add(keepCache).UTC().Format(http.TimeFormat))
-	w.Header().Add("ETag", meta.ID())
-	w.Header().Add("Last-Modified", meta.Timestamp().UTC().Format(http.TimeFormat))
 }
 
 func sendResult(w http.ResponseWriter, profile mc.Profile, result image.Image, watch *util.StopWatch) (err error) {
