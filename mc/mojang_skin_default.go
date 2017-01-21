@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	steveURL = "https://minecraft.net/images/steve.png"
-	alexURL  = "https://minecraft.net/images/alex.png"
+	steveURL = "http://assets.mojang.com/SkinTemplates/steve.png"
+	alexURL  = "http://assets.mojang.com/SkinTemplates/alex.png"
 )
 
 func downloadDefaultSkin(meta *defaultSkinMeta, alex bool) (err error) {
