@@ -2,21 +2,24 @@ package server
 
 import (
 	"flag"
+	"log"
+	"net/http"
+	"os"
+
 	"github.com/FrozenOrb/lapitar"
 	"github.com/zenazn/goji"
 	"github.com/zenazn/goji/web"
 	"github.com/zenazn/goji/web/middleware"
-	"log"
-	"net/http"
-	"os"
 )
 
 var (
+	Config   *config
 	defaults *renderDefaults
 	//decoder  = schema.NewDecoder()
 )
 
 func start(conf *config, www string) {
+	Config = conf
 	defaults = conf.Defaults
 	flag.Set("bind", conf.Address) // Uh, I guess that's a bit strange
 	if conf.Proxy {

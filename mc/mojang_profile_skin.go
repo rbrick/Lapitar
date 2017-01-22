@@ -9,8 +9,6 @@ import (
 	"github.com/FrozenOrb/lapitar/util/lhttp"
 )
 
-const skinProfileURL = "https://sessionserver.mojang.com/session/minecraft/profile/"
-
 type mojangSkinProfile struct {
 	mojangProfile
 	ProfileSkin mojangSkinMeta `json:"properties"`
@@ -39,7 +37,7 @@ func (meta mojangSkinMeta) URL() string {
 }
 
 func FetchSkin(uuid string) (p SkinProfile, err error) {
-	req, err := lhttp.Get(skinProfileURL + uuid)
+	req, err := lhttp.Get(server.Config.SessionServer + uuid)
 	if err != nil {
 		return
 	}
