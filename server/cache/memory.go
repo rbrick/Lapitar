@@ -1,10 +1,11 @@
 package cache
 
 import (
-	"github.com/LapisBlue/lapitar/mc"
 	"log"
 	"sync"
 	"time"
+
+	"github.com/FrozenOrb/lapitar/mc"
 )
 
 type memorySkinCache struct {

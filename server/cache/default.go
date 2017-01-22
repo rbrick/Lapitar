@@ -1,8 +1,9 @@
 package cache
 
 import (
-	"github.com/LapisBlue/lapitar/mc"
 	"time"
+
+	"github.com/FrozenOrb/lapitar/mc"
 )
 
 var (

@@ -2,17 +2,18 @@ package server
 
 import (
 	"fmt"
-	"github.com/LapisBlue/lapitar/cli"
-	"github.com/LapisBlue/lapitar/server/cache"
-	"github.com/ogier/pflag"
 	"os"
 	"path/filepath"
+
+	"github.com/FrozenOrb/lapitar/cli"
+	"github.com/FrozenOrb/lapitar/server/cache"
+	"github.com/ogier/pflag"
 )
 
 const (
 	serverConfig = "lapitar.json"
 	//cacheFolder  = "caches"
-	wwwFolder = "src/github.com/LapisBlue/lapitar/server/www"
+	wwwFolder = "src/github.com/FrozenOrb/lapitar/server/www"
 )
 
 func Run(name string, args []string) int {

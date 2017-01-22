@@ -1,9 +1,10 @@
 package server
 
 import (
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/zenazn/goji/web"
 	"net/http"
+
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/zenazn/goji/web"
 )
 
 func serveSkin(c web.C, w http.ResponseWriter, r *http.Request) {

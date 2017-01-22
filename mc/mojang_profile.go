@@ -2,7 +2,8 @@ package mc
 
 import (
 	"encoding/json"
-	"github.com/LapisBlue/lapitar/util/lhttp"
+
+	"github.com/FrozenOrb/lapitar/util/lhttp"
 )
 
 const (

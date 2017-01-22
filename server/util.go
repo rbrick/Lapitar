@@ -1,16 +1,17 @@
 package server
 
 import (
-	"github.com/LapisBlue/lapitar/mc"
-	"github.com/LapisBlue/lapitar/server/cache"
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/zenazn/goji/web"
 	"image"
 	"image/png"
 	"log"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/FrozenOrb/lapitar/mc"
+	"github.com/FrozenOrb/lapitar/server/cache"
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/zenazn/goji/web"
 )
 
 func printError(err error, message ...interface{}) {

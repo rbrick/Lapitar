@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/LapisBlue/lapitar/cli"
-	"github.com/LapisBlue/lapitar/server"
 	"os"
 	"path/filepath"
 	"runtime"
+
+	"github.com/FrozenOrb/lapitar/cli"
+	"github.com/FrozenOrb/lapitar/server"
 )
 
 func init() {

@@ -2,12 +2,13 @@ package lhttp
 
 import (
 	"errors"
-	"github.com/LapisBlue/lapitar"
 	"io"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
+
+	"github.com/FrozenOrb/lapitar"
 )
 
 const (

@@ -1,11 +1,12 @@
 package server
 
 import (
-	"github.com/LapisBlue/lapitar/render"
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/zenazn/goji/web"
 	"log"
 	"net/http"
+
+	"github.com/FrozenOrb/lapitar/render"
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/zenazn/goji/web"
 )
 
 func serveRender(c web.C, w http.ResponseWriter, r *http.Request, size int, conf *renderConfig, portrait, full bool) {

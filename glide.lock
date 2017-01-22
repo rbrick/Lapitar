@@ -1,0 +1,34 @@
+hash: 18339dd3b686ba84fa0960ab398feb25d2b542228eaca917d7d842378b36ad71
+updated: 2017-01-21T18:14:41.7509271-06:00
+imports:
+- name: github.com/disintegration/imaging
+  version: 243d2d8673c1225a6afceeb9b3b4423d485dc8df
+- name: github.com/FrozenOrb/lapitar
+  version: 55ce3df3b26d418fbb7d76cd1c97dd60d896ec0a
+  subpackages:
+  - cli
+  - face
+  - mc
+  - render
+  - server
+  - server/cache
+  - util
+  - util/lhttp
+- name: github.com/ogier/pflag
+  version: 32a05c62658bd1d7c7e75cbc8195de5d585fde0f
+- name: github.com/zenazn/goji
+  version: 64eb34159fe53473206c2b3e70fe396a639452f2
+  subpackages:
+  - bind
+  - graceful
+  - graceful/listener
+  - web
+  - web/middleware
+  - web/mutil
+- name: golang.org/x/image
+  version: 83686c547965220f8b5d75e83ddc67d73420a89f
+  subpackages:
+  - bmp
+  - tiff
+  - tiff/lzw
+testImports: []

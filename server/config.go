@@ -2,11 +2,12 @@ package server
 
 import (
 	"encoding/json"
-	"github.com/LapisBlue/lapitar/face"
-	"github.com/LapisBlue/lapitar/render"
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/disintegration/imaging"
 	"io"
+
+	"github.com/FrozenOrb/lapitar/face"
+	"github.com/FrozenOrb/lapitar/render"
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/disintegration/imaging"
 )
 
 const (

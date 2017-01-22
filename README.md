@@ -1,4 +1,4 @@
-# Lapitar [![Build Status](https://travis-ci.org/LapisBlue/Lapitar.svg?branch=master)](https://travis-ci.org/LapisBlue/Lapitar)
+# Lapitar
 
 __Note: Lapitar is not actively maintained and deprecated. It was replaced by [Visage](https://github.com/unascribed/Visage) which is hosted at https://visage.surgeplay.com.__
 
@@ -27,9 +27,9 @@ Lapitar is primarily tested on the latest Ubuntu LTS and Go release. Other distr
 
     - Ubuntu: `sudo apt-get install build-essential pkg-config libosmesa6-dev libglu1-mesa-dev`
 
-- Install and compile Lapitar by executing the following command: `go get github.com/LapisBlue/lapitar/lapitar`
+- Install and compile Lapitar by executing the following command: `go get github.com/FrozenOrb/lapitar/lapitar`
 - The executable will be created in `$GOPATH/bin/lapitar`.
-- If you want to update Lapitar later you can execute `go get -u github.com/LapisBlue/lapitar/lapitar`.
+- If you want to update Lapitar later you can execute `go get -u github.com/FrozenOrb/lapitar/lapitar`.
 
 [Lapitar]: https://lapitar.lapis.blue
 [Go]: https://golang.org

@@ -1,11 +1,12 @@
 package server
 
 import (
-	"github.com/LapisBlue/lapitar/face"
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/zenazn/goji/web"
 	"log"
 	"net/http"
+
+	"github.com/FrozenOrb/lapitar/face"
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/zenazn/goji/web"
 )
 
 func serveFace(c web.C, w http.ResponseWriter, r *http.Request, size int, overlay bool) {

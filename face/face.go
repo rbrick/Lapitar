@@ -1,11 +1,12 @@
 package face
 
 import (
-	"github.com/LapisBlue/lapitar/mc"
-	"github.com/LapisBlue/lapitar/util"
-	"github.com/disintegration/imaging"
 	"image"
 	"image/draw"
+
+	"github.com/FrozenOrb/lapitar/mc"
+	"github.com/FrozenOrb/lapitar/util"
+	"github.com/disintegration/imaging"
 )
 
 const MinimumSize = 8

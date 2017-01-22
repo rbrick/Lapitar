@@ -4,8 +4,9 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"errors"
-	"github.com/LapisBlue/lapitar/util/lhttp"
 	"path"
+
+	"github.com/FrozenOrb/lapitar/util/lhttp"
 )
 
 const skinProfileURL = "https://sessionserver.mojang.com/session/minecraft/profile/"

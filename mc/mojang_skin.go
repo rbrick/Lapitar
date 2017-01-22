@@ -2,10 +2,11 @@ package mc
 
 import (
 	"fmt"
-	"github.com/LapisBlue/lapitar/util/lhttp"
 	"image/png"
 	"io"
 	"net/http"
+
+	"github.com/FrozenOrb/lapitar/util/lhttp"
 )
 
 const (
