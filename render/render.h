@@ -9,7 +9,12 @@ typedef struct Image {
     int height;
 } Image;
 
-bool Render(
+bool RenderHead(
+     float angle, float tilt, float zoom,
+     bool shadow, bool lighting, bool overlay,
+     Image result, Image head, Image headOverlay);
+
+bool RenderBody(
         float angle, float tilt, float zoom,
         bool shadow, bool lighting,
         bool portrait, bool full,

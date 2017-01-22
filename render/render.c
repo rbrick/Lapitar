@@ -94,7 +94,102 @@ void renderPlayer(bool overlay, bool body, bool alex) {
     draw(1.0f + offset, 1.0f + offset, 1.0f + offset, TEXTURE_TYPE_HEAD);
 }
 
-bool Render(
+// kind of messy, but it works
+bool RenderHead(
+     float angle, float tilt, float zoom,
+     bool shadow, bool lighting, bool overlay,
+     Image result, Image head, Image headOverlay) {
+    OSMesaContext ctx = initOSMesa(result);
+    
+    // if the ctx was created successfully
+    if (ctx) { 
+      // Initalize OpenGL
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearDepth(1.0f);
+        glShadeModel(GL_SMOOTH);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LEQUAL);
+
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+
+        
+        gluPerspective(45.0f, (float) result.width / (float) result.height, 0.1f, 100.0f);
+        glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+        glMatrixMode(GL_MODELVIEW);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        
+        glPushMatrix();
+        glCullFace(GL_BACK);
+
+        // Upload head
+        upload(TEXTURE_HEAD, head);
+        if (overlay)
+            upload(TEXTURE_HEAD_OVERLAY, headOverlay);
+        glTranslatef(0.0f, 0.20f, 0.0f);    
+
+        glTranslatef(0, 0, zoom);
+        glRotatef(tilt, 1.0f, 0.0f, 0.0f);
+        glRotatef(angle, 0.0f, 1.0f, 0.0f);
+
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glEnable(GL_BLEND);
+        glEnable(GL_ALPHA_TEST);
+        glAlphaFunc(GL_SRC_ALPHA, GL_GREATER);
+        glEnable(GL_DEPTH_TEST);
+
+        if (shadow) {
+            // Setup shadow
+            glPushMatrix();
+
+            glTranslatef(0.0f, -1.0f, 0.0f);
+            GLfloat scaleX = 0.97f;
+            GLfloat scaleZ = 0.97f;
+
+            static const GLfloat count = 10;
+            static const GLfloat inc = 0.02f;
+
+            GLfloat i;
+            for (i = 0; i < count; i++) {
+                scaleX += inc;
+                scaleZ += inc;
+
+                glTranslatef(0.0f, -0.001f, 0.0f);
+                glColor4f(0.0f, 0.0f, 0.0f, (1.0f - (i / (float) count)) / 2.0f);
+                draw(scaleX, 0.01f, scaleZ, TEXTURE_TYPE_NONE);
+            }
+
+            glPopMatrix();
+        }
+
+        if (lighting) {
+            // Setup lighting
+            glEnable(GL_LIGHTING);
+            glEnable(GL_LIGHT0);
+
+            static const float position[4] = {-4.0f, 2.0f, 1.0f, 100.0f};
+            static const float ambient[4] = {3.0f, 3.0f, 3.0f, 1.0f};
+            glLightfv(GL_LIGHT0, GL_POSITION, position);
+            glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+        }
+
+        glEnable(GL_TEXTURE_2D);
+        glColor3f(1, 1, 1);
+
+        renderPlayer(false, false, false);
+        if (overlay) {
+            renderPlayer(true, false, false);
+        }
+
+        glPopMatrix();
+        glFinish();
+        OSMesaDestroyContext(ctx);
+    } 
+}
+ 
+bool RenderBody(
         float angle, float tilt, float zoom,
         bool shadow, bool lighting,
         bool portrait, bool full,

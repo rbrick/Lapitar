@@ -69,21 +69,30 @@ func Render(
 			leftLegOverlay = prepareOverlay(sk, mc.LeftLeg)
 			rightLegOverlay = prepareOverlay(sk, mc.RightLeg)
 		}
-	}
 
-	// Render the head
-	if !render(
-		angle, tilt, zoom,
-		shadow, lighting,
-		portrait, full,
-		overlay, !sk.IsLegacy(), sk.IsAlex(),
-		img,
-		head, headOverlay,
-		body, bodyOverlay,
-		leftArm, leftArmOverlay, rightArm, rightArmOverlay,
-		leftLeg, leftLegOverlay, rightLeg, rightLegOverlay) {
+		// Render the body
+		if !renderBody(
+			angle, tilt, zoom,
+			shadow, lighting,
+			portrait, full,
+			overlay, !sk.IsLegacy(), sk.IsAlex(),
+			img,
+			head, headOverlay,
+			body, bodyOverlay,
+			leftArm, leftArmOverlay, rightArm, rightArmOverlay,
+			leftLeg, leftLegOverlay, rightLeg, rightLegOverlay) {
 
-		return nil, errors.New("Rendering failed")
+			return nil, errors.New("Rendering failed")
+		}
+
+	} else {
+		// only render head
+		if !renderHead(
+			angle, tilt, zoom,
+			shadow, lighting, overlay,
+			img, head, headOverlay) {
+			return nil, errors.New("Rendering failed")
+		}
 	}
 
 	result = img
@@ -142,7 +151,17 @@ func prepareUpload(img image.Image) *image.RGBA {
 	return rgba
 }
 
-func render(
+func renderHead(
+	angle, tilt, zoom float32,
+	shadow, lighting, overlay bool,
+	result *image.RGBA, head, headOverlay *image.RGBA) bool {
+	return bool(C.RenderHead(
+		C.float(angle), C.float(tilt), C.float(zoom),
+		C.bool(shadow), C.bool(overlay), C.bool(lighting),
+		v_image(result), v_image(head), v_image(headOverlay)))
+}
+
+func renderBody(
 	angle, tilt, zoom float32,
 	shadow, lighting bool,
 	portrait, full bool,
@@ -153,7 +172,7 @@ func render(
 	leftArm, leftArmOverlay, rightArm, rightArmOverlay *image.RGBA,
 	leftLeg, leftLegOverlay, rightLeg, rightLegOverlay *image.RGBA) bool {
 
-	return bool(C.Render(
+	return bool(C.RenderBody(
 		C.float(angle), C.float(tilt), C.float(zoom),
 		C.bool(shadow), C.bool(lighting),
 		C.bool(portrait), C.bool(full),
