@@ -50,11 +50,11 @@ func serveHeadWithSize(c web.C, w http.ResponseWriter, r *http.Request) {
 }
 
 func servePortraitNormal(c web.C, w http.ResponseWriter, r *http.Request) {
-	serveRender(c, w, r, defaults.Portrait.Size.Def, defaults.Portrait, true, false)
+	// serveRender(c, w, r, defaults.Portrait.Size.Def, defaults.Portrait, true, false)
 }
 
 func servePortraitWithSize(c web.C, w http.ResponseWriter, r *http.Request) {
-	serveRender(c, w, r, parseSize(c, defaults.Portrait.Size.Def), defaults.Portrait, true, false)
+	// serveRender(c, w, r, parseSize(c, defaults.Portrait.Size.Def), defaults.Portrait, true, false)
 }
 
 func servePlayerNormal(c web.C, w http.ResponseWriter, r *http.Request) {

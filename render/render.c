@@ -100,10 +100,10 @@ bool Render(
         bool portrait, bool full,
         bool overlay, bool newSkin, bool alex,
         Image result,
-        Image head, Image *headOverlay,
-        Image *body, Image *bodyOverlay,
-        Image *leftArm, Image *leftArmOverlay, Image *rightArm, Image *rightArmOverlay,
-        Image *leftLeg, Image *leftLegOverlay, Image *rightLeg, Image *rightLegOverlay) {
+        Image head, Image headOverlay,
+        Image body, Image bodyOverlay,
+        Image leftArm, Image leftArmOverlay, Image rightArm, Image rightArmOverlay,
+        Image leftLeg, Image leftLegOverlay, Image rightLeg, Image rightLegOverlay) {
 
     if (full) portrait = true;
 
@@ -132,21 +132,21 @@ bool Render(
         // Upload head
         upload(TEXTURE_HEAD, head);
         if (overlay)
-            upload(TEXTURE_HEAD_OVERLAY, *headOverlay);
+            upload(TEXTURE_HEAD_OVERLAY, headOverlay);
 
         if (portrait) {
-            upload(TEXTURE_BODY, *body);
-            upload(TEXTURE_LEFT_ARM, *leftArm);
-            upload(TEXTURE_RIGHT_ARM, *rightArm);
-            upload(TEXTURE_LEFT_LEG, *leftLeg);
-            upload(TEXTURE_RIGHT_LEG, *rightLeg);
+            upload(TEXTURE_BODY, body);
+            upload(TEXTURE_LEFT_ARM, leftArm);
+            upload(TEXTURE_RIGHT_ARM, rightArm);
+            upload(TEXTURE_LEFT_LEG, leftLeg);
+            upload(TEXTURE_RIGHT_LEG, rightLeg);
 
             if (overlay) {
-                upload(TEXTURE_BODY_OVERLAY, *bodyOverlay);
-                upload(TEXTURE_LEFT_ARM_OVERLAY, *leftArmOverlay);
-                upload(TEXTURE_RIGHT_ARM_OVERLAY, *rightArmOverlay);
-                upload(TEXTURE_LEFT_LEG_OVERLAY, *leftLegOverlay);
-                upload(TEXTURE_RIGHT_LEG_OVERLAY, *rightLegOverlay);
+                upload(TEXTURE_BODY_OVERLAY, bodyOverlay);
+                upload(TEXTURE_LEFT_ARM_OVERLAY, leftArmOverlay);
+                upload(TEXTURE_RIGHT_ARM_OVERLAY, rightArmOverlay);
+                upload(TEXTURE_LEFT_LEG_OVERLAY, leftLegOverlay);
+                upload(TEXTURE_RIGHT_LEG_OVERLAY, rightLegOverlay);
             }
         }
 

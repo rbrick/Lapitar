@@ -153,17 +153,16 @@ func render(
 	leftArm, leftArmOverlay, rightArm, rightArmOverlay *image.RGBA,
 	leftLeg, leftLegOverlay, rightLeg, rightLegOverlay *image.RGBA) bool {
 
-	return bool(
-		C.Render(
-			C.float(angle), C.float(tilt), C.float(zoom),
-			C.bool(shadow), C.bool(lighting),
-			C.bool(portrait), C.bool(full),
-			C.bool(overlay), C.bool(newSkin), C.bool(alex),
-			v_image(result),
-			v_image(head), p_image(headOverlay),
-			p_image(body), p_image(bodyOverlay),
-			p_image(leftArm), p_image(leftArmOverlay), p_image(rightArm), p_image(rightArmOverlay),
-			p_image(leftLeg), p_image(leftLegOverlay), p_image(rightLeg), p_image(rightLegOverlay)))
+	return bool(C.Render(
+		C.float(angle), C.float(tilt), C.float(zoom),
+		C.bool(shadow), C.bool(lighting),
+		C.bool(portrait), C.bool(full),
+		C.bool(overlay), C.bool(newSkin), C.bool(alex),
+		v_image(result),
+		v_image(head), v_image(headOverlay),
+		v_image(body), v_image(bodyOverlay),
+		v_image(leftArm), v_image(leftArmOverlay), v_image(rightArm), v_image(rightArmOverlay),
+		v_image(leftLeg), v_image(leftLegOverlay), v_image(rightLeg), v_image(rightLegOverlay)))
 }
 
 func v_image(image *image.RGBA) C.Image {
