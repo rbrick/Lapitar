@@ -46,7 +46,7 @@ func Run(name string, args []string) int {
 		return exit
 	}
 
-	cache.Init(cache.Memory())
+	cache.Init(cache.Memory(conf.SessionServer))
 
 	start(conf, *wwwDir)
 	return 0 // TODO: What if the above fails?

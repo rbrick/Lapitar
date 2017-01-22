@@ -38,7 +38,7 @@ func (meta mojangSkinMeta) URL() string {
 	return meta.url
 }
 
-func FetchSkin(uuid string) (p SkinProfile, err error) {
+func FetchSkin(skinProfileURL string, uuid string) (p SkinProfile, err error) {
 	req, err := lhttp.Get(skinProfileURL + uuid)
 	if err != nil {
 		return

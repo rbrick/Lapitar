@@ -15,9 +15,10 @@ const (
 )
 
 type config struct {
-	Address  string          `json:"address"`
-	Proxy    bool            `json:"proxy"`
-	Defaults *renderDefaults `json:"defaults"`
+	Address       string          `json:"address"`
+	Proxy         bool            `json:"proxy"`
+	SessionServer string          `json:"session-server"`
+	Defaults      *renderDefaults `json:"defaults"`
 }
 
 type renderDefaults struct {
@@ -52,6 +53,7 @@ func defaultConfig() *config {
 	return &config{
 		":8088",
 		false,
+		"https://sessionserver.mojang.com/session/minecraft/profile/",
 		&renderDefaults{
 			newRenderConfig(-35, 20, -4.5),
 			newRenderConfig(25, 10, -4.5),

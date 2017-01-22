@@ -8,10 +8,13 @@ import (
 )
 
 type memorySkinCache struct {
+	sessionServer string
 }
 
-func Memory() SkinCache {
-	result := &memorySkinCache{}
+func Memory(sessionServer string) SkinCache {
+	result := &memorySkinCache{
+		sessionServer,
+	}
 	return result
 }
 
@@ -40,7 +43,7 @@ func (cache *memorySkinCache) FetchByName(realName string) (skin SkinMeta) {
 func (cache *memorySkinCache) Fetch(uuid string) (skin SkinMeta) {
 	uuid = mc.ParseUUID(uuid)
 
-	sk, err := mc.FetchSkin(uuid)
+	sk, err := mc.FetchSkin(cache.sessionServer, uuid)
 	if sk == nil || err != nil {
 		log.Println("Failed to skin profile for", uuid, err)
 		skin = FallbackByUUID(uuid)
