@@ -3,8 +3,6 @@ FROM golang:1.8.3
 # Instal required dependencies
 RUN apt-get update -qq && apt-get install -y build-essential pkg-config libosmesa6-dev libglu1-mesa-dev
 
-RUN adduser --disabled-password --gecos "" lapitar 
-
 # Install glide
 RUN curl https://glide.sh/get | sh
 
